@@ -4,10 +4,10 @@ socket.on('connect', function () {
   console.log('connected to server through socketIO');
 
 
-  socket.emit('createMessage', {
-    from: 'Uli',
-    text: 'All right now'
-  });
+  // socket.emit('createMessage', {
+  //   from: 'Uli',
+  //   text: 'All right now'
+  // });
 });
 
 socket.on('disconnect', function () {
