@@ -15,11 +15,22 @@ app.use(express.static(publicPath));
 io.on('connection', function (socket) {
   console.log('New User connected');
 
-  // socket.emit('newMessage', {
-  //   from: 'a.b@c.com',
-  //   text: 'something happened',
-  //   createdAt: 123123
-  // });
+//socket.emit from Admin text Welcome to the chat app
+socket.emit('newMessage', {
+  from: 'Admin',
+  text: 'Welcome to the chat app',
+  createdAt: new Date().getTime()
+});
+
+//socket.boradcast.emit from Admin text Welcome to the chat app
+socket.broadcast.emit('newMessage', {
+  from: 'Admin',
+  text: 'new user joined',
+  createdAt: new Date().getTime()
+});
+
+
+
 
   socket.on('createMessage', (message) => {
     console.log('createMessage', message);
@@ -28,6 +39,12 @@ io.on('connection', function (socket) {
       text: message.text,
       createdAt: new Date().getTime()
     });
+    //
+    // socket.broadcast.emit('newMessage' , {
+    //   from: message.from,
+    //   text: message.text,
+    //   createdAt: new Date().getTime()
+    // });
   });
 
 
