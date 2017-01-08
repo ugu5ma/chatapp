@@ -31,8 +31,6 @@ socket.on('connect', function () {
 
     }
   });
-
-
   // socket.emit('createMessage', {
   //   from: 'Uli',
   //   text: 'All right now'
@@ -110,8 +108,7 @@ socket.on('newLocationMessage', function (message) {
   var messageTextbox = jQuery('[name=message]');
 
   socket.emit('createMessage', {
-   from: 'User',
-   text: messageTextbox.val()
+     text: messageTextbox.val()
   }, function () {
    messageTextbox.val('')
   });
